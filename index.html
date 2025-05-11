@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Technique JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+    <nav id="navbar">
+        <header>
+            <h1>Documentation JavaScript</h1>
+        </header>
+        
+        <div class="nav-links-container">
+            <a href="#Introduction" class="nav-link">Introduction</a>
+            <a href="#Syntaxe_de_base" class="nav-link">Syntaxe de base</a>
+            <a href="#Variables_et_constantes" class="nav-link">Variables et constantes</a>
+            <a href="#Structures_de_contrôle" class="nav-link">Structures de contrôle</a>
+            <a href="#Fonctions" class="nav-link">Fonctions</a>
+            <a href="#Objets" class="nav-link">Objets</a>
+            <a href="#Tableaux" class="nav-link">Tableaux</a>
+            <a href="#Manipulation_DOM" class="nav-link">Manipulation DOM</a>
+            <a href="#Événements" class="nav-link">Événements</a>
+            <a href="#API_avancées" class="nav-link">API avancées</a>
+        </div>
+    </nav>
+
+    
+    <main id="main-doc">
+       
+        <section class="main-section" id="Introduction">
+            <header>
+                <h2>Introduction</h2>
+            </header>
+            <article>
+                <p><strong>JavaScript</strong> est un langage de programmation qui permet de rendre les pages web interactives. Contrairement au HTML (structure) et au CSS (mise en forme), JavaScript est utilisé pour ajouter du <em>comportement dynamique</em> à une page.</p>
+        
+                <p>C'est un langage :</p>
+                <ul>
+                    <li><strong>Interprété</strong> : il est exécuté directement par le navigateur, sans besoin de compilation.</li>
+                    <li><strong>Multi-paradigme</strong> : il supporte la programmation impérative, fonctionnelle et orientée objet.</li>
+                    <li><strong>Basé sur des prototypes</strong> : l'héritage en JavaScript se fait par clonage d'objets existants (et non par classes comme en Java classique, bien que les classes soient disponibles depuis ES6).</li>
+                    <li><strong>Dynamique</strong> : les types de variables peuvent changer à l'exécution.</li>
+                </ul>
+        
+                <h3>🎯 À quoi sert JavaScript ?</h3>
+                <p>Voici quelques exemples d'usages courants :</p>
+                <ul>
+                    <li>💡 Modifier dynamiquement le contenu HTML d'une page (par exemple : afficher un message ou des données).</li>
+                    <li>🎨 Changer le style CSS d'un élément sans recharger la page (par exemple : changer une couleur ou une taille au clic).</li>
+                    <li>🖱️ Réagir aux actions de l'utilisateur (clic, survol, clavier, etc.).</li>
+                </ul>
+        
+                <h3>📌 Exemple de code simple :</h3>
+                <p>Ce code modifie le contenu d’un élément HTML avec l’ID <code>demo</code> :</p>
+        
+                <pre><code>
+        // Ceci est un commentaire en JavaScript
+        document.getElementById("demo").innerHTML = "Bonjour JavaScript!";
+                </code></pre>
+        
+                <p>➡️ Ce que fait ce code :</p>
+                <ul>
+                    <li><code>document</code> : fait référence à la page HTML.</li>
+                    <li><code>getElementById("demo")</code> : sélectionne l’élément dont l’ID est "demo".</li>
+                    <li><code>innerHTML = "Bonjour JavaScript!"</code> : remplace le contenu HTML de cet élément.</li>
+                </ul>
+        
+                <p>🔍 <strong>Remarque importante :</strong> JavaScript n’est <em>pas</em> Java. Ce sont deux langages totalement différents :</p>
+                <ul>
+                    <li><strong>Java</strong> est un langage compilé orienté objet (souvent utilisé côté serveur ou dans les applications Android).</li>
+                    <li><strong>JavaScript</strong> est principalement utilisé dans le navigateur, côté client, pour rendre les pages interactives.</li>
+                </ul>
+        
+                <p>📅 JavaScript a été créé en 1995 par Brendan Eich en seulement <strong>10 jours</strong>, initialement sous le nom de <em>Mocha</em>, puis renommé en <em>LiveScript</em>, avant d'être finalement appelé <strong>JavaScript</strong> pour des raisons marketing.</p>
+            </article>
+        </section>
+        
+
+        
+        <section class="main-section" id="Syntaxe_de_base">
+            <header>
+                <h2>Syntaxe de base</h2>
+            </header>
+            <article>
+                <p>La syntaxe en JavaScript désigne l’ensemble des règles qui permettent d’écrire un code compréhensible et exécutable par le navigateur. Voici les principaux éléments à connaître :</p>
+        
+                <ul>
+                    <li>📍 Les instructions se terminent généralement par un point-virgule <code>;</code>. Bien qu’il soit parfois optionnel, l’utiliser évite des erreurs inattendues.</li>
+                    <li>📦 Les blocs de code (par exemple dans une fonction ou une condition) sont entourés d’accolades <code>{ }</code>.</li>
+                    <li>📝 Les variables peuvent être déclarées avec :
+                        <ul>
+                            <li><code>var</code> : ancienne méthode, avec un comportement de portée fonctionnelle.</li>
+                            <li><code>let</code> : pour déclarer des variables dont la valeur peut changer (portée bloc).</li>
+                            <li><code>const</code> : pour déclarer des constantes (valeurs qui ne doivent pas être réassignées).</li>
+                        </ul>
+                    </li>
+                </ul>
+        
+                <h3>📌 Exemple de syntaxe de base</h3>
+                <p>Voici un petit script illustrant ces règles :</p>
+        
+                <pre><code>
+        // Déclaration d'une variable avec let
+        let message = "Hello";
+        
+        // Déclaration d'une fonction
+        function showMessage() {
+            // Affiche une boîte de dialogue avec le message
+            alert(message);
+        }
+        
+        // Appel de la fonction
+        showMessage();
+                </code></pre>
+        
+                <p>📎 Ce code fait trois choses :</p>
+                <ol>
+                    <li>Déclare une variable nommée <code>message</code> contenant la chaîne "Hello".</li>
+                    <li>Crée une fonction <code>showMessage()</code> qui utilise la méthode <code>alert()</code> pour afficher cette valeur.</li>
+                    <li>Appelle la fonction pour qu’elle s’exécute.</li>
+                </ol>
+        
+                <h3>⚠️ Sensibilité à la casse</h3>
+                <p>JavaScript est <strong>sensible à la casse</strong> (case-sensitive), ce qui signifie que <code>Message</code> et <code>message</code> sont deux noms différents. Écrivez vos variables et fonctions avec rigueur.</p>
+        
+                <h3>🔤 Littéraux (valeurs directes)</h3>
+                <p>En JavaScript, vous pouvez utiliser différents types de littéraux pour représenter des données simples :</p>
+        
+                <pre><code>
+        // Nombres
+        123         // entier
+        3.14        // nombre à virgule flottante
+        
+        // Chaînes de caractères
+        "Bonjour"   // guillemets doubles
+        'Hello'     // ou simples
+        
+        // Booléens
+        true
+        false
+        
+        // Tableaux (collections de valeurs indexées)
+        [1, 2, 3]
+        
+        // Objets (collections de paires clé:valeur)
+        {nom: "Jean", age: 30}
+                </code></pre>
+        
+                <p>Ces types de données sont les fondations de la manipulation d’informations en JavaScript.</p>
+            </article>
+        </section>
+        
+
+        
+        <section class="main-section" id="Variables_et_constantes">
+            <header>
+              <h2>Variables et constantes</h2>
+            </header>
+            <article>
+              <p>Les variables servent à stocker des données (nombres, chaînes, objets, etc.) dans un programme. En JavaScript, il existe trois façons de les déclarer :</p>
+          
+              <ol>
+                <li><code><strong>let</strong></code> – déclare une variable <strong>modifiable</strong>, avec une portée limitée au bloc (entre accolades).</li>
+                <li><code><strong>const</strong></code> – déclare une <strong>constante</strong>, dont la valeur ne peut pas être réassignée.</li>
+                <li><code><strong>var</strong></code> – ancienne façon de déclarer une variable, avec une portée fonctionnelle. Elle est <strong>déconseillée</strong> dans les nouveaux projets.</li>
+              </ol>
+          
+              <h3>🧪 Exemples de déclarations :</h3>
+              <pre><code>
+          // Déclaration avec let : la valeur peut être modifiée
+          let age = 25;
+          age = 26; // ✅ Modification autorisée
+          
+          // Déclaration avec const : la valeur est fixe
+          const PI = 3.14;
+          // PI = 3.1415; // ❌ Erreur ! Impossible de modifier une constante
+          
+          // Déclaration avec var : fonctionnelle, à éviter
+          var nom = "Jean";
+              </code></pre>
+          
+              <h3>✏️ Règles de nommage des variables :</h3>
+              <p>En JavaScript, un nom de variable (ou d’identifiant) doit respecter certaines règles :</p>
+              <ul>
+                <li>🔤 Doit commencer par une lettre (<code>a-z</code> ou <code>A-Z</code>), un underscore (<code>_</code>) ou un dollar (<code>$</code>)</li>
+                <li>🔢 Peut contenir des chiffres, mais ne peut pas commencer par un chiffre</li>
+                <li>🧠 Est sensible à la casse : <code>maVariable</code> ≠ <code>MAVariable</code></li>
+                <li>🚫 Ne doit pas être un <strong>mot réservé</strong> de JavaScript (comme <code>if</code>, <code>while</code>, <code>let</code>, etc.)</li>
+              </ul>
+          
+              <h3>✅ Bonnes pratiques de nommage :</h3>
+              <p>Adopter un style clair et cohérent améliore la lisibilité de votre code :</p>
+              <pre><code>
+          // camelCase pour les noms de variables
+          let monNomComplet = "Jean Dupont";
+          
+          // UPPER_CASE pour les constantes
+          const TAUX_TVA = 0.2;
+          
+          // Des noms explicites et descriptifs
+          let nombreUtilisateursConnectes = 100;
+              </code></pre>
+          
+              <h3>💡 Remarques importantes :</h3>
+              <ul>
+                <li>On privilégiera <code>let</code> et <code>const</code> pour tous les nouveaux projets.</li>
+                <li><code>const</code> ne signifie pas que l’objet est immuable, mais que la <strong>référence</strong> ne peut pas changer. Exemple :</li>
+              </ul>
+          
+              <pre><code>
+          const utilisateur = { nom: "Alice" };
+          utilisateur.nom = "Bob"; // ✅ Ceci est autorisé
+          // utilisateur = { nom: "Charlie" }; // ❌ Ceci génère une erreur
+              </code></pre>
+          
+              <p>Comprendre la portée (scope) des variables est également essentiel, mais cela fera l’objet d’une autre section dédiée.</p>
+            </article>
+          </section>
+          
+
+        
+        <section class="main-section" id="Structures_de_contrôle">
+            <header>
+              <h2>Structures de contrôle</h2>
+            </header>
+            <article>
+              <p>Les structures de contrôle permettent de gérer le flux d'exécution d'un programme : conditions, répétitions, et choix multiples.</p>
+          
+              <h3>🧭 Structures conditionnelles</h3>
+              <p>Permettent d’exécuter du code selon que des conditions soient vraies ou non :</p>
+          
+              <pre><code>
+          // if...else
+          let age = 17;
+          
+          if (age >= 18) {
+              console.log("Majeur");
+          } else {
+              console.log("Mineur");
+          }
+          
+          // if...else if...else
+          let temperature = 15;
+          
+          if (temperature > 30) {
+              console.log("Très chaud");
+          } else if (temperature > 20) {
+              console.log("Chaud");
+          } else {
+              console.log("Frais");
+          }
+              </code></pre>
+          
+              <h4>🧩 switch : alternative à plusieurs if</h4>
+              <p>Utile pour tester plusieurs cas possibles :</p>
+          
+              <pre><code>
+          let note = 'B';
+          
+          switch (note) {
+              case 'A':
+                  console.log("Excellent");
+                  break;
+              case 'B':
+                  console.log("Bien");
+                  break;
+              case 'C':
+                  console.log("Moyen");
+                  break;
+              default:
+                  console.log("Non évalué");
+          }
+              </code></pre>
+          
+              <h3>🔁 Boucles (répétition de blocs)</h3>
+          
+              <h4>1. for : boucle à compteur</h4>
+              <pre><code>
+          for (let i = 0; i < 5; i++) {
+              console.log("i vaut : " + i);
+          }
+              </code></pre>
+          
+              <h4>2. while : boucle tant qu’une condition est vraie</h4>
+              <pre><code>
+          let i = 0;
+          
+          while (i < 5) {
+              console.log("i vaut : " + i);
+              i++;
+          }
+              </code></pre>
+          
+              <h4>3. do...while : boucle exécutée au moins une fois</h4>
+              <pre><code>
+          let j = 0;
+          
+          do {
+              console.log("j vaut : " + j);
+              j++;
+          } while (j < 5);
+              </code></pre>
+          
+              <h3>🔎 Opérateurs de comparaison</h3>
+              <p>Ces opérateurs sont utilisés dans les conditions :</p>
+          
+              <ul>
+                <li><code>==</code> : égalité avec conversion de type (ex : <code>'5' == 5</code> ➜ <code>true</code>)</li>
+                <li><code>===</code> : égalité stricte (même type et même valeur)</li>
+                <li><code>!=</code> : inégalité (conversion de type)</li>
+                <li><code>!==</code> : inégalité stricte</li>
+                <li><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> : comparaisons classiques</li>
+              </ul>
+          
+              <h4>💡 Exemple pratique :</h4>
+              <pre><code>
+          let a = '5';
+          let b = 5;
+          
+          console.log(a == b);   // true (valeurs équivalentes)
+          console.log(a === b);  // false (types différents)
+              </code></pre>
+          
+              <p>Utilisez <code>===</code> et <code>!==</code> dans vos projets pour éviter les erreurs liées aux conversions implicites de type.</p>
+            </article>
+          </section>
+          
+
+       
+        <section class="main-section" id="Fonctions">
+            <header>
+              <h2>Fonctions</h2>
+            </header>
+            <article>
+              <p>Les fonctions sont des blocs de code conçus pour effectuer une tâche spécifique. Elles permettent de réutiliser du code sans le réécrire plusieurs fois.</p>
+          
+              <h3>📌 Déclaration de fonction (function declaration)</h3>
+              <p>Déclare une fonction nommée. Elle peut être appelée avant sa déclaration grâce au "hoisting".</p>
+              <pre><code>
+          function carre(x) {
+              return x * x;
+          }
+          
+          console.log(carre(5)); // Affiche 25
+              </code></pre>
+          
+              <h3>📌 Expression de fonction (function expression)</h3>
+              <p>Attribue une fonction anonyme à une variable. Cette fonction ne peut être appelée qu'après sa déclaration.</p>
+              <pre><code>
+          const carre = function(x) {
+              return x * x;
+          };
+          
+          console.log(carre(4)); // Affiche 16
+              </code></pre>
+          
+              <h3>📌 Fonction fléchée (arrow function - ES6)</h3>
+              <p>Synthaxe moderne et plus concise. Ne possède pas de <code>this</code> propre, utile dans les fonctions de rappel (callbacks).</p>
+          
+              <pre><code>
+          const carre = x => x * x;
+          
+          // Avec plusieurs instructions
+          const somme = (a, b) => {
+              const resultat = a + b;
+              return resultat;
+          };
+          
+          console.log(somme(3, 7)); // Affiche 10
+              </code></pre>
+          
+              <h3>📥 Paramètres et arguments</h3>
+              <p>Les fonctions peuvent recevoir des paramètres et retourner des résultats. Des valeurs par défaut peuvent être définies.</p>
+          
+              <pre><code>
+          function afficherInfos(nom, age = 20) {
+              console.log(`Nom: ${nom}, Age: ${age}`);
+          }
+          
+          afficherInfos("Jean");         // Affiche: Nom: Jean, Age: 20
+          afficherInfos("Marie", 25);    // Affiche: Nom: Marie, Age: 25
+              </code></pre>
+          
+              <h3>🔄 Fonctions d'ordre supérieur</h3>
+              <p>Ce sont des fonctions qui prennent une ou plusieurs fonctions en paramètre, ou qui en retournent une.</p>
+          
+              <pre><code>
+          // Fonction qui applique une opération
+          function appliquerOperation(x, operation) {
+              return operation(x);
+          }
+          
+          // Appel avec une fonction fléchée
+          const resultat = appliquerOperation(5, x => x * x);
+          console.log(resultat); // Affiche 25
+              </code></pre>
+          
+              <h3>✅ Bonnes pratiques</h3>
+              <ul>
+                <li>Utiliser des noms clairs et descriptifs (ex: <code>calculerTotal</code>, <code>afficherMessage</code>)</li>
+                <li>Préférer les fonctions fléchées pour les callbacks simples</li>
+                <li>Utiliser des valeurs par défaut pour éviter les erreurs de paramètres manquants</li>
+                <li>Modulariser votre code en petites fonctions réutilisables</li>
+              </ul>
+            </article>
+          </section>
+          
+
+       
+        <section class="main-section" id="Objets">
+            <header><h2>Objets</h2></header>
+            <article>
+              <p>En JavaScript, un <strong>objet</strong> est une structure permettant de regrouper des données (appelées <strong>propriétés</strong>) et des comportements (appelés <strong>méthodes</strong>) sous une même entité.</p>
+          
+              <p>Les objets sont créés à l'aide de paires <code>clé: valeur</code>.</p>
+          
+              <h3>🔸 Déclaration d’un objet</h3>
+              <pre><code>
+          const personne = {
+              nom: "Jean",
+              age: 30,
+              estActif: true
+          };
+              </code></pre>
+          
+              <h3>🔹 Accès aux propriétés</h3>
+              <ul>
+                <li><code>objet.propriete</code></li>
+                <li><code>objet["propriete"]</code> (utile pour les noms dynamiques ou contenant des espaces)</li>
+              </ul>
+          
+              <pre><code>
+          console.log(personne.nom);       // "Jean"
+          console.log(personne["age"]);   // 30
+              </code></pre>
+          
+              <h3>🔧 Modification et ajout de propriétés</h3>
+              <pre><code>
+          personne.age = 31;               // Modification
+          personne.email = "jean@mail.com"; // Ajout
+              </code></pre>
+          
+              <h3>⚙️ Méthodes (fonctions dans un objet)</h3>
+              <p>Une méthode est une fonction associée à un objet.</p>
+              <pre><code>
+          const voiture = {
+              marque: "Toyota",
+              demarrer: function() {
+                  console.log("La voiture démarre");
+              }
+          };
+          
+          voiture.demarrer(); // Appel de méthode
+              </code></pre>
+          
+              <h3>🧠 Le mot-clé <code>this</code></h3>
+              <p>Dans une méthode, <code>this</code> fait référence à l'objet lui-même.</p>
+              <pre><code>
+          const utilisateur = {
+              prenom: "Alice",
+              saluer: function() {
+                  console.log("Bonjour, je suis " + this.prenom);
+              }
+          };
+          
+          utilisateur.saluer(); // Bonjour, je suis Alice
+              </code></pre>
+          
+              <h3>🔁 Parcourir un objet</h3>
+              <pre><code>
+          for (let cle in personne) {
+              console.log(cle + ": " + personne[cle]);
+          }
+              </code></pre>
+          
+              <h3>✅ Bonnes pratiques</h3>
+              <ul>
+                <li>Utiliser <code>const</code> pour créer des objets que vous ne redéfinirez pas</li>
+                <li>Organiser les données liées ensemble dans un même objet</li>
+                <li>Utiliser des noms clairs pour les propriétés et méthodes</li>
+              </ul>
+          
+              <p>Les objets sont la base de JavaScript : tout (ou presque) est un objet, y compris les fonctions et les tableaux.</p>
+            </article>
+          </section>
+          
+
+          <section class="main-section" id="Tableaux">
+            <header><h2>Tableaux</h2></header>
+            <article>
+              <p>Un <strong>tableau</strong> (array) est une structure de données utilisée pour stocker plusieurs valeurs dans une seule variable. Les éléments sont ordonnés et indexés à partir de 0.</p>
+          
+              <h3>🔸 Déclaration d’un tableau</h3>
+              <pre><code>
+          // Tableau de chaînes
+          const fruits = ["pomme", "banane", "orange"];
+          
+          // Tableau de nombres
+          const nombres = [10, 20, 30];
+          
+          // Tableau mixte
+          const melange = ["texte", 42, true];
+              </code></pre>
+          
+              <h3>🔹 Accès et modification</h3>
+              <pre><code>
+          console.log(fruits[0]);   // "pomme"
+          fruits[1] = "kiwi";       // Remplace "banane" par "kiwi"
+          console.log(fruits);      // ["pomme", "kiwi", "orange"]
+              </code></pre>
+          
+              <h3>➕ Ajouter et supprimer des éléments</h3>
+              <pre><code>
+          fruits.push("ananas");       // Ajoute à la fin
+          fruits.unshift("mangue");    // Ajoute au début
+          
+          fruits.pop();                // Supprime le dernier
+          fruits.shift();              // Supprime le premier
+              </code></pre>
+          
+              <h3>🔁 Parcourir un tableau</h3>
+              <pre><code>
+          // for classique
+          for (let i = 0; i < fruits.length; i++) {
+              console.log(fruits[i]);
+          }
+          
+          // for...of
+          for (const fruit of fruits) {
+              console.log(fruit);
+          }
+              </code></pre>
+          
+              <h3>🔧 Méthodes utiles</h3>
+              <pre><code>
+          fruits.includes("pomme");      // true
+          fruits.indexOf("orange");      // 2
+          fruits.splice(1, 1);           // Supprime 1 élément à l'index 1
+          fruits.sort();                 // Trie alphabétiquement
+          fruits.reverse();              // Inverse l'ordre
+              </code></pre>
+          
+              <h3>💡 Bonnes pratiques</h3>
+              <ul>
+                <li>Utiliser <code>const</code> si vous ne redéclarez pas le tableau</li>
+                <li>Éviter les "trous" (indices manquants)</li>
+                <li>Utiliser <code>for...of</code> ou <code>forEach()</code> pour une meilleure lisibilité</li>
+              </ul>
+          
+              <h3>📦 Méthodes avancées (ES6+)</h3>
+              <pre><code>
+          const fruitsEnMajuscules = fruits.map(fruit => fruit.toUpperCase());
+          const fruitsFiltres = fruits.filter(fruit => fruit.length > 5);
+          const total = nombres.reduce((acc, val) => acc + val, 0);
+              </code></pre>
+          
+              <p>Les tableaux sont largement utilisés en JavaScript pour manipuler des listes de données, créer des interfaces dynamiques, stocker des résultats, etc.</p>
+            </article>
+          </section>
+          
+
+          <section class="main-section" id="Manipulation_DOM">
+            <header><h2>Manipulation DOM</h2></header>
+            <article>
+              <p>Le <strong>DOM</strong> (Document Object Model) est une représentation en mémoire de la structure HTML d’une page web. Grâce à JavaScript, on peut accéder, modifier ou supprimer dynamiquement des éléments du DOM.</p>
+          
+              <h3>🔍 Accès aux éléments</h3>
+              <pre><code>
+          document.getElementById("demo");         // Par ID
+          document.getElementsByClassName("box");  // Par classe (HTMLCollection)
+          document.getElementsByTagName("p");      // Par balise
+          document.querySelector(".box");          // Premier élément correspondant au sélecteur CSS
+          document.querySelectorAll(".box");       // Tous les éléments correspondants
+              </code></pre>
+          
+              <h3>✏️ Modifier le contenu</h3>
+              <pre><code>
+          document.getElementById("demo").textContent = "Bonjour";  // Modifie le texte
+          document.getElementById("demo").innerHTML = "&lt;strong&gt;Salut&lt;/strong&gt;"; // Interprète HTML
+              </code></pre>
+          
+              <h3>🎨 Modifier le style</h3>
+              <pre><code>
+          const elem = document.getElementById("demo");
+          elem.style.color = "blue";
+          elem.style.backgroundColor = "#f0f0f0";
+              </code></pre>
+          
+              <h3>🧩 Ajouter/Supprimer des éléments</h3>
+              <pre><code>
+          // Créer un nouvel élément
+          const newPara = document.createElement("p");
+          newPara.textContent = "Texte ajouté dynamiquement";
+          document.body.appendChild(newPara); // Ajout à la fin du <body>
+          
+          // Supprimer un élément
+          const demo = document.getElementById("demo");
+          demo.remove();
+              </code></pre>
+          
+              <h3>🧠 Gérer les attributs</h3>
+              <pre><code>
+          const image = document.getElementById("photo");
+          image.setAttribute("src", "image.jpg");
+          image.getAttribute("src");              // Lire un attribut
+          image.removeAttribute("alt");           // Supprimer un attribut
+              </code></pre>
+          
+              <h3>🎯 Écouter des événements</h3>
+              <pre><code>
+          const btn = document.getElementById("btn");
+          btn.addEventListener("click", () => {
+              alert("Bouton cliqué !");
+          });
+              </code></pre>
+          
+              <h3>💡 Bonnes pratiques</h3>
+              <ul>
+                <li>Utiliser <code>querySelector</code> et <code>querySelectorAll</code> pour plus de flexibilité</li>
+                <li>Minimiser les modifications directes dans le DOM pour optimiser les performances</li>
+                <li>Éviter d'utiliser <code>innerHTML</code> si du contenu HTML externe est injecté (risque XSS)</li>
+              </ul>
+          
+              <p>La manipulation du DOM est essentielle pour rendre les pages web interactives (comme cacher/afficher du contenu, modifier dynamiquement les textes, gérer des animations, etc.).</p>
+            </article>
+          </section>
+          
+
+          <section class="main-section" id="Événements">
+            <header><h2>Événements</h2></header>
+            <article>
+              <p>JavaScript permet de réagir aux événements déclenchés par l'utilisateur, tels que les clics, les saisies au clavier, les mouvements de la souris, etc. Grâce aux événements, vous pouvez rendre vos pages web interactives.</p>
+              
+              <h3>💡 Qu'est-ce qu'un événement ?</h3>
+              <p>Un événement est une action détectée par le navigateur, comme un clic de souris, un survol de souris, une pression sur une touche, ou encore le chargement d'une page. Vous pouvez écouter ces événements et réagir en conséquence avec des fonctions JavaScript.</p>
+              
+              <h3>🔑 Déclaration d'un gestionnaire d'événements</h3>
+              <p>Vous pouvez associer un événement à un élément HTML en utilisant la méthode <code>addEventListener()</code>. Cela permet de définir un comportement spécifique lorsque l'événement se produit.</p>
+              
+              <pre><code>
+          const button = document.getElementById("btn");
+          
+          // Écouter l'événement "click" sur un bouton
+          button.addEventListener("click", () => alert("Cliqué!"));
+              </code></pre>
+          
+              <p>Dans l'exemple ci-dessus, chaque fois que l'utilisateur clique sur le bouton avec l'ID <code>btn</code>, l'alerte <code>"Cliqué!"</code> s'affiche.</p>
+              
+              <h3>💻 Types d'événements courants</h3>
+              <ul>
+                <li><strong>click</strong> : Lorsqu'un utilisateur clique sur un élément (par exemple, un bouton)</li>
+                <li><strong>keydown</strong> : Lorsqu'une touche du clavier est enfoncée</li>
+                <li><strong>keyup</strong> : Lorsqu'une touche du clavier est relâchée</li>
+                <li><strong>mousemove</strong> : Lorsqu'un mouvement de souris est détecté</li>
+                <li><strong>submit</strong> : Lorsqu'un formulaire est soumis</li>
+                <li><strong>focus</strong> : Lorsqu'un élément obtient le focus</li>
+                <li><strong>blur</strong> : Lorsqu'un élément perd le focus</li>
+              </ul>
+              
+              <h3>💡 Exemple : Événements sur le clavier</h3>
+              <pre><code>
+          const input = document.getElementById("texte");
+          
+          input.addEventListener("keydown", (event) => {
+              console.log("Touche enfoncée : " + event.key);
+          });
+              </code></pre>
+              <p>Dans cet exemple, chaque fois qu'une touche est enfoncée dans un champ de texte, la touche sera affichée dans la console.</p>
+          
+              <h3>📑 Exemple : Gestionnaire d'événements sur un formulaire</h3>
+              <pre><code>
+          const form = document.getElementById("form");
+          
+          form.addEventListener("submit", (event) => {
+              event.preventDefault(); // Empêche l'envoi du formulaire
+              console.log("Formulaire soumis");
+          });
+              </code></pre>
+              <p>Dans cet exemple, l'envoi du formulaire est annulé et un message est affiché dans la console lorsque l'utilisateur soumet le formulaire.</p>
+          
+              <h3>⏳ Délai d'attente d'un événement (debounce)</h3>
+              <p>Il peut être utile de limiter la fréquence à laquelle un événement est exécuté, surtout pour des événements qui se produisent fréquemment comme <code>scroll</code> ou <code>resize</code>. Cela se fait souvent avec une technique appelée <strong>debounce</strong>.</p>
+              
+              <pre><code>
+          let timeout;
+          window.addEventListener("resize", () => {
+              clearTimeout(timeout);
+              timeout = setTimeout(() => {
+                  console.log("Fenêtre redimensionnée");
+              }, 300); // Exécuter après un délai de 300 ms
+          });
+              </code></pre>
+              <p>Dans cet exemple, l'événement <code>resize</code> est écouté, mais l'action de redimensionnement n'est effectuée qu'après 300 ms sans changement de taille (afin de limiter les appels excessifs).</p>
+          
+              <h3>⚠️ Détacher un événement</h3>
+              <p>Il est aussi possible de retirer un gestionnaire d'événements à l'aide de <code>removeEventListener()</code>.</p>
+              
+              <pre><code>
+          button.removeEventListener("click", handler);
+              </code></pre>
+          
+              <h3>🔄 Propagation des événements</h3>
+              <p>Les événements se propagent à travers la page, passant par des phases appelées <strong>bubbling</strong> (montée) et <strong>capturing</strong> (descente). Par défaut, un événement commence à l'élément cible et se propage vers le parent (bubbling).</p>
+          
+              <p>Exemple de gestion des phases de propagation :</p>
+              
+              <pre><code>
+          document.getElementById("parent").addEventListener("click", () => {
+              alert("Clic sur parent");
+          }, true); // Capturing phase (true)
+              
+          document.getElementById("child").addEventListener("click", () => {
+              alert("Clic sur enfant");
+          }, false); // Bubbling phase (false, ou omis)
+              </code></pre>
+              
+              <p>Dans cet exemple, l'événement "click" sur l'élément enfant va d'abord être capturé par le parent avant d'atteindre l'enfant.</p>
+          
+            </article>
+          </section>
+          
+
+          <section class="main-section" id="API_avancées">
+            <header><h2>API avancées</h2></header>
+            <article>
+              <p>JavaScript propose de nombreuses API (Application Programming Interface) qui permettent d'ajouter des fonctionnalités avancées à vos applications web. Ces API vous permettent d'interagir avec des services web, manipuler le DOM, gérer les fichiers, et bien plus encore.</p>
+          
+              <h3>🔑 Qu'est-ce qu'une API en JavaScript ?</h3>
+              <p>Une API en JavaScript est un ensemble d'interfaces ou de méthodes qui permettent à un script de communiquer avec le navigateur ou avec des services externes. Cela permet d'effectuer des actions comme récupérer des données depuis un serveur, manipuler des éléments DOM, ou encore interagir avec le matériel de l'utilisateur (comme la géolocalisation).</p>
+          
+              <h3>🌐 API Fetch</h3>
+              <p>L'API <code>fetch()</code> permet de faire des requêtes HTTP asynchrones pour récupérer des données depuis un serveur web. C'est une alternative moderne à l'ancienne méthode avec <code>XMLHttpRequest</code>.</p>
+          
+              <pre><code>
+          // Exemple de requête GET avec fetch()
+          fetch("https://api.example.com/data")
+            .then(response => {
+              if (!response.ok) {
+                  throw new Error("Erreur réseau");
+              }
+              return response.json();  // Convertir la réponse en JSON
+            })
+            .then(data => console.log(data))  // Traiter les données
+            .catch(error => console.error("Erreur:", error));  // Gérer les erreurs
+              </code></pre>
+              <p>Dans cet exemple, on envoie une requête <code>GET</code> pour récupérer des données sous format JSON depuis un serveur. La réponse est ensuite convertie et manipulée en utilisant les promesses (<code>Promise</code>) pour un traitement asynchrone.</p>
+          
+              <h3>📥 POST avec fetch()</h3>
+              <p>Vous pouvez également envoyer des données vers le serveur en utilisant la méthode <code>POST</code> avec l'API <code>fetch()</code>.</p>
+              
+              <pre><code>
+          fetch("https://api.example.com/submit", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({ name: "Jean", age: 30 })
+          })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error("Erreur:", error));
+              </code></pre>
+              <p>Dans cet exemple, on envoie un objet JSON contenant un nom et un âge vers le serveur, qui peut être utilisé pour enregistrer des informations dans une base de données.</p>
+          
+              <h3>💻 API de Géolocalisation</h3>
+              <p>L'API de géolocalisation permet d'obtenir la position géographique d'un utilisateur. Cela peut être utilisé pour des applications de cartes, de localisation ou d'autres services personnalisés en fonction de l'emplacement de l'utilisateur.</p>
+          
+              <pre><code>
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                  console.log("Latitude: " + position.coords.latitude);
+                  console.log("Longitude: " + position.coords.longitude);
+              });
+          } else {
+              console.log("La géolocalisation n'est pas supportée par votre navigateur.");
+          }
+              </code></pre>
+              <p>Dans cet exemple, on utilise <code>navigator.geolocation.getCurrentPosition()</code> pour récupérer les coordonnées GPS actuelles de l'utilisateur. Cette méthode est très utile pour des applications de cartographie ou des services personnalisés basés sur la localisation.</p>
+          
+              <h3>💾 API FileReader</h3>
+              <p>L'API <code>FileReader</code> permet de lire des fichiers locaux (comme des images ou des documents) sélectionnés par un utilisateur à partir de son système de fichiers.</p>
+          
+              <pre><code>
+          const inputFile = document.getElementById("fileInput");
+          
+          inputFile.addEventListener("change", function(event) {
+              const file = event.target.files[0];
+              const reader = new FileReader();
+              
+              reader.onload = function(e) {
+                  console.log("Fichier chargé: ", e.target.result);
+              };
+              
+              reader.readAsDataURL(file);  // Lire le fichier comme une URL de données
+          });
+              </code></pre>
+              <p>Dans cet exemple, on permet à l'utilisateur de sélectionner un fichier via un <code>input</code> de type <code>file</code>, et une fois le fichier sélectionné, on l'affiche sous forme d'URL de données avec <code>FileReader</code>.</p>
+          
+              <h3>💬 WebSockets</h3>
+              <p>Les WebSockets permettent de créer une connexion persistante entre le serveur et le client pour échanger des données en temps réel. Cela est particulièrement utile pour des applications comme les chats en ligne ou les jeux multijoueurs.</p>
+              
+              <pre><code>
+          const socket = new WebSocket("ws://example.com/socket");
+          
+          socket.onopen = function() {
+              console.log("Connexion ouverte");
+              socket.send("Bonjour serveur!");
+          };
+          
+          socket.onmessage = function(event) {
+              console.log("Message reçu : " + event.data);
+          };
+          
+          socket.onerror = function(error) {
+              console.error("Erreur WebSocket : " + error);
+          };
+          
+          socket.onclose = function() {
+              console.log("Connexion fermée");
+          };
+              </code></pre>
+              <p>Dans cet exemple, un WebSocket est ouvert vers le serveur, et l'application envoie et reçoit des messages en temps réel. Cela permet une communication bidirectionnelle continue.</p>
+          
+              <h3>🧑‍💻 API Notification</h3>
+              <p>L'API de notification permet aux sites web d'envoyer des notifications aux utilisateurs, même lorsque le site n'est pas actif ou que l'utilisateur n'est pas sur la page. C'est idéal pour des alertes ou des rappels.</p>
+              
+              <pre><code>
+          if ("Notification" in window) {
+              Notification.requestPermission().then(function(permission) {
+                  if (permission === "granted") {
+                      new Notification("Vous avez une nouvelle alerte!");
+                  }
+              });
+          }
+              </code></pre>
+              <p>Dans cet exemple, on demande la permission d'envoyer une notification à l'utilisateur. Si l'utilisateur accepte, une notification s'affiche.</p>
+          
+            </article>
+          </section>
+          
+    </main>
+
+    <footer>
+        <p>Documentation technique JavaScript - © 2023</p>
+    </footer>
+</body>
+</html>
